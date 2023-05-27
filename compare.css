@@ -60,6 +60,7 @@ body {
 }
 .fa-github {
   font-size: 3.2rem;
+  cursor: pointer;
 }
 /*burger menu*/
 .burger-menu {

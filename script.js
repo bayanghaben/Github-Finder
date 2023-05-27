@@ -56,11 +56,7 @@ async function getUser() {
     console.log(repos);
   }
 }
-// **note that you are awesome
-// *!hey you
-// *todo
-//*@param pnyi
-// fkrdjer
+
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> getUser()
 search.addEventListener("click", () => {
   getUser();

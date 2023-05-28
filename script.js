@@ -1,4 +1,5 @@
 "use strict";
+//DOM
 let bugerMenu = document.querySelector(".burger-menu");
 bugerMenu.addEventListener("click", () => {});
 let userImage = document.querySelector(".user-profile-pic");
@@ -15,7 +16,7 @@ let language = document.querySelectorAll(".repo-language");
 let languageColor = document.querySelectorAll(".repo-language-color");
 let editBtn = document.querySelector(".edit-profile-btn");
 let image1 = userImage.getAttribute("src");
-
+//get user function
 async function getUser() {
   const response = await fetch(`https://api.github.com/users/${input.value}`);
   const response2 = await fetch(
@@ -24,8 +25,9 @@ async function getUser() {
 
   const data = await response.json();
   const repos = await response2.json();
+  
+  // fill user info content in the page:
   followers.innerText = `${data.followers}`;
-  // image.innerHTML= ${data.avatar_url};
   document.getElementById("profile-mini-pic-img").src = `${data.avatar_url}`;
   following.textContent = `.${data.following}`;
   document.querySelector(".user-profile-pic").src = `${data.avatar_url}`;
@@ -34,6 +36,7 @@ async function getUser() {
   username.textContent = `${data.login}`;
   repoNum.textContent = `${data.public_repos}`;
 
+//get repos names &there languages & languages colors
   for (let i = 0; i < 6; i++) {
     project[i].innerHTML = `${repos[i].name}`;
     language[i].innerHTML = `${repos[i].language}`;
@@ -56,8 +59,7 @@ async function getUser() {
     console.log(repos);
   }
 }
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> getUser()
+// search click eventlistener
 search.addEventListener("click", () => {
   getUser();
   editBtn.textContent = `Follow`;

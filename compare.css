@@ -72,7 +72,8 @@ body {
   cursor: pointer;
 }
 
-.search-bar {
+.search-bar,
+.search-bar-nav {
   height: 30px;
   width: 300px;
   border: 1px solid var(--gray);
@@ -138,17 +139,7 @@ ul li:hover {
 }
 
 /* m*/
-.search-bar {
-  height: 30px;
-  width: 300px;
-  border: 1px solid var(--gray);
-  border-radius: 5px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5px;
-  cursor: pointer;
-  gap: 8px;
-}
+
 .compare-input1,
 .compare-input2 {
   height: 30px;
@@ -324,9 +315,12 @@ footer {
     width: 30%;
   }
 }
-@media screen and (max-width: 320px) {
-  .search-bar {
+@media screen and (max-width: 360px) {
+  .search-bar-nav {
     display: none;
+  }
+  .search-bar {
+    width: 250px;
   }
 
   .footer-ul {

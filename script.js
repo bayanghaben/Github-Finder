@@ -56,7 +56,6 @@ async function getUser() {
     console.log(repos);
   }
 }
-function reset 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> getUser()
 search.addEventListener("click", () => {

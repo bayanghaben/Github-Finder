@@ -19,13 +19,15 @@ githubIcon.addEventListener("click", () => {
 button.addEventListener("click", compare);
 
 function compare() {
-  let repoCount1 = repoNum1.textContent;
-  let repoCount2 = repoNum2.textContent;
-  let followersCount1 = followersNum1.textContent;
-  let followersCount2 = followersNum2.textContent;
+  let repoCount1 = parseInt(repoNum1.textContent);
+  let repoCount2 = parseInt(repoNum2.textContent);
+  console.log(typeof repoCount2);
+  let followersCount1 = parseInt(followersNum1.textContent);
+  let followersCount2 = parseInt(followersNum2.textContent);
   result1.style.display = "block";
   result2.style.display = "block";
-
+  console.log(repoCount1);
+  console.log(repoCount2);
   if (repoCount1 > repoCount2) {
     username1.style.color = "yellowgreen";
 
@@ -45,7 +47,7 @@ function compare() {
     ).src = `https://media.giphy.com/media/Ix5Pk3cUofTLW/giphy.gif`;
     username1.style.color = "red";
     username2.style.color = "yellowgreen";
-  } else if (repoCount1 == repoCount2) {
+  } else if (repoCount1 === repoCount2) {
     if (followersCount1 > followersCount2) {
       username1.style.color = "yellowgreen";
       document.getElementById(
@@ -83,8 +85,8 @@ async function getUser1() {
   document.getElementById(
     "user-profile-pic-compare1"
   ).src = `${data.avatar_url}`;
-  followersNum1.textContent = `#Followers: ${data.followers}`;
-  repoNum1.textContent = `#Repositories: ${data.public_repos}`;
+  followersNum1.textContent = `${data.followers}`;
+  repoNum1.textContent = `${data.public_repos}`;
   console.log(data);
 }
 async function getUser2() {
@@ -95,8 +97,8 @@ async function getUser2() {
   document.getElementById(
     "user-profile-pic-compare2"
   ).src = `${data.avatar_url}`;
-  followersNum2.textContent = `#Followers: ${data.followers}`;
-  repoNum2.textContent = `#Repositories: ${data.public_repos}`;
+  followersNum2.textContent = `${data.followers}`;
+  repoNum2.textContent = `${data.public_repos}`;
   console.log(data);
 }
 

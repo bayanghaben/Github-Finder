@@ -15,6 +15,7 @@ let project = document.querySelectorAll(".repo-name");
 let language = document.querySelectorAll(".repo-language");
 let languageColor = document.querySelectorAll(".repo-language-color");
 let editBtn = document.querySelector(".edit-profile-btn");
+let repoBox = document.querySelectorAll(".repo-item");
 let image1 = userImage.getAttribute("src");
 //get user function
 async function getUser() {
@@ -25,7 +26,7 @@ async function getUser() {
 
   const data = await response.json();
   const repos = await response2.json();
-  
+
   // fill user info content in the page:
   followers.innerText = `${data.followers}`;
   document.getElementById("profile-mini-pic-img").src = `${data.avatar_url}`;
@@ -36,29 +37,30 @@ async function getUser() {
   username.textContent = `${data.login}`;
   repoNum.textContent = `${data.public_repos}`;
 
-//get repos names &there languages & languages colors
+  //get repos names &there languages & languages colors
   for (let i = 0; i < 6; i++) {
-    project[i].innerHTML = `${repos[i].name}`;
-    language[i].innerHTML = `${repos[i].language}`;
-
-    if (`${repos[i].language}` == "HTML") {
-      languageColor[i].style.backgroundColor = "red";
-    } else if (`${repos[i].language}` == "JavaScript") {
-      languageColor[i].style.backgroundColor = "yellow";
-    } else if (`${repos[i].language}` == "CSS") {
-      languageColor[i].style.backgroundColor = "purple";
+    if (`${repos[i]}` === "undefined") {
+      repoBox[i].style.display = "none";
     } else {
-      languageColor[i].style.backgroundColor = "inherit";
-    }
-    if (`${repos[i].language}` == "null") {
-      language[i].innerHTML = ``;
-    } else if (`${data.name}` == "null") {
-      githubName.innerHTML = ``;
-    }
+      repoBox[i].style.display = "block";
 
-    console.log(repos);
+      project[i].innerHTML = `${repos[i].name}`;
+      language[i].innerHTML = `${repos[i].language}`;
+      if (`${repos[i].language}` == "HTML") {
+        languageColor[i].style.backgroundColor = "red";
+      } else if (`${repos[i].language}` == "JavaScript") {
+        languageColor[i].style.backgroundColor = "yellow";
+      } else if (`${repos[i].language}` == "CSS") {
+        languageColor[i].style.backgroundColor = "purple";
+      } else {
+        languageColor[i].style.backgroundColor = "inherit";
+        console.log(data);
+        console.log(repos);
+      }
+    }
   }
 }
+
 // search click eventlistener
 search.addEventListener("click", () => {
   getUser();
@@ -66,3 +68,10 @@ search.addEventListener("click", () => {
 
   console.log("hi");
 });
+let word = "stressed";
+let newWord = "";
+for (let i = word.length - 1; i >= 0; i--) {
+  newWord += word[i];
+  console.log(newWord);
+}
+console.log(newWord);
